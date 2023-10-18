@@ -1,5 +1,7 @@
 import subprocess
 
+import sounddevice as sd
+
 def update_libc():
     update_command = "sudo apt-get update && sudo apt-get install -y --only-upgrade libc6"
     try:
@@ -26,3 +28,7 @@ def install_portaudio_dev():
 def install_package():
     update_libc()
     install_portaudio_dev()
+    
+    print(sd.__version__)
+    
+install_package()
