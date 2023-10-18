@@ -1,0 +1,2 @@
+[phase.name]
+  aptPkgs = ['libasound-dev', 'portaudio19-dev', 'libportaudio2', 'libportaudiocpp0']
