@@ -30,12 +30,14 @@ def install_package():
     install_portaudio_dev()
     
     # sdvc = subprocess.run("pip install sounddevice", shell=True, check=True)
-    import sounddevice as sd
+    
     # locate = subprocess.run("locate libportaudio", shell=True, check=True)
     
     # print("sounddevice:", sdvc)
     # print("locate:", locate)
     
-    print(sd.__version__)
     
 install_package()
+
+import sounddevice as sd
+print(sd.__version__)
