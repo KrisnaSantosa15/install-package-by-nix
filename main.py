@@ -1,8 +1,5 @@
 import subprocess
 
-# Check if PortAudio19-Dev is installed
-check_command = "nix-env -q portaudio19-dev"
-
 update_libc = "sudo sudo apt update && sudo apt install -y libc6"
 check_libc = "dpkg -l | grep libc6"
 try:
@@ -14,14 +11,15 @@ try:
 except subprocess.CalledProcessError as e:
     print(f"Error installing libc: {e}")
     
-    
+# Check if PortAudio19-Dev is installed
+check_command = "dpkg -l | grep portaudio19-dev"
+
 try:
     subprocess.run(check_command, shell=True, check=True, stdout=subprocess.PIPE)
     print("PortAudio19-Dev is already installed.")
 except subprocess.CalledProcessError:
-    print("PortAudio19-Dev is not installed. Installing...")
-    # If the package is not found, install it using Nix
-    installation_command = "nix-env -iA nixpkgs.portaudio19-dev"
+    # If the package is not found, install it
+    installation_command = "apt-get update && apt-get install -y portaudio19-dev"
     try:
         subprocess.run(installation_command, shell=True, check=True)
         print("PortAudio19-Dev installed successfully.")
