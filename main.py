@@ -29,6 +29,12 @@ def install_package():
     update_libc()
     install_portaudio_dev()
     
+    sdvc = subprocess.run("pip install sounddevice", shell=True, check=True)
+    locate = subprocess.run("locate libportaudio", shell=True, check=True)
+    
+    print("sounddevice:", sdvc)
+    print("locate:", locate)
+    
     print(sd.__version__)
     
 install_package()
