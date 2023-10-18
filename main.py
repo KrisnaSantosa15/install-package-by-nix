@@ -1,6 +1,6 @@
 import subprocess
 
-import sounddevice as sd
+# import sounddevice as sd
 
 def update_libc():
     update_command = "sudo apt-get update && sudo apt-get install -y --only-upgrade libc6"
@@ -35,6 +35,6 @@ def install_package():
     print("sounddevice:", sdvc)
     print("locate:", locate)
     
-    print(sd.__version__)
+    # print(sd.__version__)
     
 install_package()
