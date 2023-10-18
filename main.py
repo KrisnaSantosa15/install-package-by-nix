@@ -4,10 +4,12 @@ import subprocess
 check_command = "nix-env -q portaudio19-dev"
 
 update_libc = "sudo sudo apt update && sudo apt install -y libc6"
-
+check_libc = "dpkg -l | grep libc6"
 try:
     libc = subprocess.run(update_libc, shell=True, check=True, stdout=subprocess.PIPE)
+    check = subprocess.run(check_libc, shell=True, check=True, stdout=subprocess.PIPE)
     print(libc.stdout)
+    print(check.stdout)
     
 except subprocess.CalledProcessError as e:
     print(f"Error installing libc: {e}")
